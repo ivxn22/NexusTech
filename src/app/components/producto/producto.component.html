@@ -1,0 +1,35 @@
+<button class="btn volver" (click)="volver()">← Volver</button>
+<div class="detalle-producto" *ngIf="producto && !loading && !error">
+  <div class="columna imagenes">
+    <img class="principal" [src]="'http://nexustech.gal/backend/' + imagenPrincipal"
+      alt="{{ producto.nombre }}" />
+    <div class="miniaturas" *ngIf="producto.imagenes.length > 1">
+      <img *ngFor="let img of producto.imagenes" [src]="'http://nexustech.gal/backend/' + img"
+        (click)="cambiarImagenPrincipal(img)" [alt]="producto.nombre" [class.selected]="img === imagenPrincipal" />
+    </div>
+  </div>
+
+  <div class="columna detalles">
+    <h2>{{ producto.nombre }}</h2>
+    <p class="precio">Precio: <strong> {{ producto.precio | number:'1.2-2' }}€</strong></p>
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" min="1" [(ngModel)]="cantidadSeleccionada" />
+    <p class="descripcion">
+      {{ mostrarDescripcionCompleta ? producto.descripcion : (producto.descripcion | slice:0:450) + '...' }}
+      <span class="toggle-descripcion" (click)="mostrarDescripcionCompleta = !mostrarDescripcionCompleta">
+        {{ mostrarDescripcionCompleta ? '▲ Mostrar menos' : '▼ Leer más' }}
+      </span>
+    </p>
+
+
+    <div class="acciones">
+      <button class="btn comprar" (click)="comprarAhora()" ><ion-icon name="cart-outline"></ion-icon> Comprar ahora</button>
+      <button class="btn carrito" (click)="agregarAlCarrito(producto, cantidadSeleccionada)">
+        <ion-icon name="add-outline"></ion-icon> Añadir al carrito
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="estado carga">Cargando producto...</div>
+<div *ngIf="error" class="estado error">{{ error }}</div>

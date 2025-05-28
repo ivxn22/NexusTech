@@ -1,0 +1,46 @@
+<button (click)="volverAdministracion()" class="btn-volver">← Administración</button>
+
+<div class="carrito-header">
+  <h1>Añadir Productos</h1>
+</div>
+
+<div class="formulario-producto">
+  <form [formGroup]="formularioProducto" (ngSubmit)="agregarProducto()">
+    <label>Nombre del producto:</label>
+    <input type="text" formControlName="nombre" required />
+    <div *ngIf="nombre?.invalid && nombre?.touched" class="error">
+      El nombre del producto es obligatorio.
+    </div>
+
+    <label>Descripción:</label>
+    <textarea formControlName="descripcion" required></textarea>
+    <div *ngIf="descripcion?.invalid && descripcion?.touched" class="error">
+      La descripción es obligatoria.
+    </div>
+
+    <label>Precio:</label>
+    <input type="number" formControlName="precio" required />
+    <div *ngIf="precio?.invalid && precio?.touched" class="error">
+      El precio debe ser mayor que 0.
+    </div>
+
+    <label>Stock:</label>
+    <input type="number" formControlName="stock" required />
+    <div *ngIf="stock?.invalid && stock?.touched" class="error">
+      El stock debe ser un número mayor que 0.
+    </div>
+
+    <label>Categoría:</label>
+    <select formControlName="id_categoria" required>
+      <option *ngFor="let categoria of categorias" [value]="categoria.id_categoria">{{ categoria.nombre }}</option>
+    </select>
+    <div *ngIf="id_categoria?.invalid && id_categoria?.touched" class="error">
+      Elige una categoría válida.
+    </div>
+
+    <label>Imágenes:</label>
+    <input type="file" (change)="onFileSelected($event)" multiple />
+
+    <button type="submit" [disabled]="formularioProducto.invalid">Guardar producto</button>
+  </form>
+</div>

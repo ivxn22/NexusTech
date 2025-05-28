@@ -1,0 +1,30 @@
+<div class="carrito-header">
+  <img src="assets/img/Logo.png" alt="Logotipo NexusTech">
+  <h1>Datos para el envio</h1>
+</div>
+
+<div class="volver-atras-container">
+  <button class="volver-atras-btn" (click)="volverAtras()">← Volver atrás</button>
+</div>
+
+<form #formulario="ngForm" (ngSubmit)="continuar(formulario)" >
+  <label>Nombre:</label>
+  <input [(ngModel)]="datosEnvio.nombre" name="nombre" required />
+
+  <label>Apellidos:</label>
+  <input [(ngModel)]="datosEnvio.apellidos" name="apellidos" required />
+
+  <label>Email:</label>
+  <input [(ngModel)]="datosEnvio.email" name="email" type="email" required />
+
+  <label>Dirección:</label>
+  <input [(ngModel)]="datosEnvio.direccion" name="direccion" required />
+
+  <label>Localidad:</label>
+  <input [(ngModel)]="datosEnvio.localidad" name="localidad" required />
+
+  <label>Teléfono:</label>
+  <input [(ngModel)]="datosEnvio.telefono" name="telefono" required />
+
+  <button type="submit">Continuar al Pago</button>
+</form>

@@ -1,0 +1,62 @@
+<button (click)="volverAdministracion()" class="btn-volver">← Administración</button>
+
+
+<div class="admin-container">
+    <div class="carrito-header">
+        <h1>Gestión de usuarios</h1>
+    </div>
+    <table class="usuarios-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Rol</th>
+                <th>Acciones</th> <!-- Nueva columna para editar -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.id_usuario }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.direccion }}</td>
+                <td>{{ usuario.rol }}</td>
+                <td>
+                    <button (click)="abrirModal(usuario)">Editar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal de edición de usuario -->
+<div *ngIf="modalVisible" class="modal">
+    <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h2>Editar Usuario</h2>
+        <form (ngSubmit)="guardarCambios()">
+            <div>
+                <label for="nombre">Nombre</label>
+                <input id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" [(ngModel)]="usuario.email" name="email" required type="email">
+            </div>
+            <div>
+                <label for="direccion">Dirección</label>
+                <input id="direccion" [(ngModel)]="usuario.direccion" name="direccion" required>
+            </div>
+            <div>
+                <label for="rol">Rol</label>
+                <select id="rol" [(ngModel)]="usuario.rol" name="rol" required>
+                    <option value="básico">Básico</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</div>

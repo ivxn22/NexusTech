@@ -1,0 +1,36 @@
+<button (click)="volver()" class="btn-volver">← Administración</button>
+    <div class="carrito-header">
+        <h1>Gestion de Pedidos</h1>
+    </div>
+<div class="admin-container">
+  <table class="usuarios-table">
+    <thead>
+      <tr>
+        <th>ID Pedido</th>
+        <th>Nombre Cliente</th>
+        <th>Fecha Pedido</th>
+        <th>Total</th>
+        <th>Estado</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidos">
+        <td data-label="ID Pedido">{{ pedido.id_pedido }}</td>
+        <td data-label="Nombre Cliente">{{ pedido.nombre }}</td>
+        <td data-label="Fecha Pedido">{{ pedido.fecha_pedido }}</td>
+        <td data-label="Total">{{ pedido.total }}</td>
+        <td>{{ pedido.estado }}</td>
+        <td>
+          <select [value]="pedido.estado" (change)="onEstadoChange($event, pedido)">
+            <option>Pendiente</option>
+            <option>Procesando</option>
+            <option>Enviado</option>
+            <option>Cancelado</option>
+          </select>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

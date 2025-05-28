@@ -1,0 +1,25 @@
+/* Asegura que el contenedor ocupe toda la altura de la pantalla */
+ion-app {
+    background-color: #151e3f; /* Color de fondo gris claro */
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column; /* Organiza el layout en columna (header, contenido, footer) */
+    overflow-y: auto; /* Activa el scroll cuando el contenido exceda la pantalla */
+}
+
+/* Contenedor principal para el contenido */
+router-outlet {
+    flex-grow: 1; /* Esto hace que el contenido ocupe el espacio entre el header y el footer */
+}
+
+/* El footer se coloca al final cuando el contenido no llena la pantalla */
+app-footer {
+    width: 100%;
+    color: #fff;
+    margin-top: 40px;
+    position: relative; /* Se coloca de forma normal, no fija */
+}
+
+ion-content {
+    background-color: #151e3f; /* Fondo gris claro */
+}

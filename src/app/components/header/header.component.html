@@ -1,0 +1,33 @@
+<div class="header">
+  <a routerLink="/" routerLinkActive="active"><img src="assets/img/Logo.png" alt="Logotipo NexusTech"></a>
+  <a class="nombre" routerLink="/" routerLinkActive="active">NexusTech</a>
+
+  <a class="enlace" routerLink="/catalogo" routerLinkActive="active">Catálogo</a>
+  <a class="enlace" routerLink="/sbnosotros" routerLinkActive="active">Sobre nosotros</a>
+  <a class="enlace" routerLink="/contacto" routerLinkActive="active">Contacto</a>
+
+  <div *ngIf="isAdmin">
+    <a class="enlace" routerLink="/admin" routerLinkActive="active">Administración</a>
+  </div>
+
+  <div class="buscador-container" (clickOutside)="mostrarResultados = false">
+    <input type="text" class="buscador" [formControl]="searchControl" placeholder="Buscar..." (click)="mostrarResultados = true" />
+    <ion-icon name="search-outline" (click)="productosFiltrados.length > 0 && irAlProducto(productosFiltrados[0].id_producto)"></ion-icon>
+
+    <!-- Lista de resultados tipo modal -->
+    <div *ngIf="mostrarResultados && productosFiltrados.length > 0" class="resultados-modal" (click)="$event.stopPropagation()">
+      <div class="resultado" *ngFor="let producto of productosFiltrados" (click)="irAlProducto(producto.id_producto)">
+        <div class="info">
+          <strong>{{ producto.nombre }}</strong>
+          <small>{{ producto.categoria }}</small>
+          <p>{{ producto.precio }}€</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Íconos de sesión y carrito -->
+    <a *ngIf="!isLoggedIn" routerLink="/IniciarSesion"><ion-icon name="person-circle-outline"></ion-icon></a>
+    <a *ngIf="isLoggedIn" (click)="cerrarSesion()"><ion-icon name="log-out-outline"></ion-icon></a>
+    <a routerLink="/carrito"><ion-icon name="cart-outline"></ion-icon></a>
+  </div>
+</div>

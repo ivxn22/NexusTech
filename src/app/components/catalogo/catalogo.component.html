@@ -1,0 +1,83 @@
+<div class="content-wrapper">
+    <div class="index-container" *ngIf="!loading; else loadingTpl"></div>
+
+    <!-- Mostrar productos destacados solo cuando estamos en pestaña 'inicio' -->
+    <div class="carrito-header">
+        <h1>Productos destacados</h1>
+    </div>
+    <div class="section-cards productos">
+        <div class="card" *ngFor="let producto of productosDestacados.slice(0, 5)"
+            (click)="mostrarProductoDetalle(producto.id_producto)" style="cursor:pointer;">
+            <img *ngIf="producto.imagen; else noImage" [src]="'http://nexustech.gal/backend/' + producto.imagen"
+                alt="{{producto.nombre}}">
+            <ng-template #noImage>
+                <img src="assets/no-image.png" alt="Sin imagen disponible">
+            </ng-template>
+            <h3>{{ producto.nombre }}</h3>
+            <p>{{ producto.descripcion | slice:0:60 }}{{ producto.descripcion.length > 60 ? '...' : '' }}</p>
+            <p><strong>€ {{ producto.precio | number:'1.2-2' }}</strong></p>
+        </div>
+    </div>
+
+    <hr style="border: none; height: 2px; background-color: #ccc; margin: 40px 0;">
+
+    <!-- Mostrar el carrusel solo si la pestaña activa es 'categorias' -->
+    <div class="carrito-header">
+        <h1 *ngIf="pestanaActiva === 'categorias'">Categorías</h1>
+        <h1 *ngIf="pestanaActiva === 'productos'">{{ categoriaSeleccionada?.categoria_nombre }}</h1>
+    </div>
+    <div class="categorias-carousel" *ngIf="pestanaActiva === 'categorias'">
+        <button class="carousel-btn prev" (click)="retrocederCategoria()">❮</button>
+
+        <div class="carousel-track-wrapper">
+            <div class="carousel-track" [style.transform]="'translateX(-' + indiceCategoriaActual * 100 + '%)'">
+                <div class="card categoria" *ngFor="let categoria of categorias"
+                    (click)="mostrarProductosCategoria(categoria)" style="cursor:pointer;">
+                    <img *ngIf="categoria.imagen_representativa; else noImageCat"
+                        [src]="'http://nexustech.gal/backend/' + categoria.imagen_representativa"
+                        alt="{{categoria.categoria_nombre}}">
+                    <ng-template #noImageCat>
+                        <img src="assets/no-image.png" alt="Sin imagen disponible">
+                    </ng-template>
+                    <div>
+                        <h3>{{ categoria.categoria_nombre }}</h3>
+                        <p>{{ categoria.categoria_descripcion | slice:0:120 }}{{ categoria.categoria_descripcion.length
+                            >
+                            120 ? '...' : '' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-btn next" (click)="avanzarCategoria()">❯</button>
+    </div>
+
+    <!-- Mostrar productos filtrados solo si la pestaña activa es 'productos' -->
+    <div *ngIf="pestanaActiva === 'productos'">
+
+        <button class="btnVolver" (click)="volverCategorias()" style="margin-bottom: 20px;">← Volver a
+            Categorías</button>
+        <div class="section-cards productos">
+            <div class="card" *ngFor="let producto of productosFiltrados"
+                (click)="mostrarProductoDetalle(producto.id_producto)" style="cursor:pointer;">
+                <img *ngIf="producto.imagen; else noImage" [src]="'http://nexustech.gal/backend/' + producto.imagen"
+                    alt="{{producto.nombre}}">
+                <ng-template #noImage>
+                    <img src="assets/no-image.png" alt="Sin imagen disponible">
+                </ng-template>
+                <h3>{{ producto.nombre }}</h3>
+                <p>{{ producto.descripcion | slice:0:60 }}{{ producto.descripcion.length > 60 ? '...' : '' }}</p>
+                <p><strong>€ {{ producto.precio | number:'1.2-2' }}</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #loadingTpl>
+        <p style="text-align:center; margin-top: 40px;">Cargando productos y categorías...</p>
+    </ng-template>
+
+    <div *ngIf="error" style="color:red; text-align:center; margin-top:20px;">
+        {{ error }}
+    </div>
+
+</div>

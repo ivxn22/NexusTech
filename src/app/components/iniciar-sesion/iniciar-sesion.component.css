@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.iniciar-sesion-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 350px;
+}
+
+.form-container img {
+  width: 150px;
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: #2a5298;
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(42, 82, 152, 0.5);
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background-color: #0077ff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #005ecb;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #b3b3b3;
+}
+
+p[mensajeError] {
+  color: red;
+  margin-top: 10px;
+}
+
+.btn-register {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: transparent;
+  border: 2px solid #0077ff;
+  color: #0077ff;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+  background-color: #0077ff;
+  color: #fff;
+}
+
+.registro-texto {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.carrito-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 32px;
+  width: 100%;
+  max-width: 1200px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  margin: 20px auto 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carrito-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: linear-gradient(135deg, #0f1a44, #1e2a68);
+  opacity: 0.6;
+  border-radius: 4px;
+}
+
+.carrito-header img {
+  height: 10%;
+  width: 10%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.carrito-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: #151e3f;
+  letter-spacing: 1.5px;
+  font-family: 'Rubik', 'Segoe UI', Tahoma, sans-serif;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}

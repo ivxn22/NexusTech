@@ -1,0 +1,49 @@
+<div *ngIf="carrito.length > 0" class="carrito-container">
+  <div class="carrito-header">
+    <img src="assets/img/Logo.png" alt="Logotipo NexusTech">
+    <h1>CARRITO</h1>
+  </div>
+  <div class="tarjetas-carrito">
+    <div *ngFor="let producto of carrito" class="tarjeta-producto">
+      <div class="producto-info">
+        <h3>{{ producto.nombre }}</h3>
+        <p>Precio Unitario: {{ producto.precio | currency:'EUR' }}</p>
+        <p>Cantidad:
+          <input type="number" [value]="producto.cantidad" min="1"
+            (change)="cambiarCantidad(producto, getValueAsNumber($event))" />
+        </p>
+        <p>Subtotal: {{ (producto.precio * producto.cantidad) | currency:'EUR' }}</p>
+      </div>
+      <button (click)="eliminarProducto(producto)">Eliminar</button>
+    </div>
+  </div>
+
+  <div class="carrito-footer">
+    <h3 class="carrito-total">Total: {{ getTotal() | currency:'EUR' }}</h3>
+    <button class="finalizar-compra-btn" (click)="finalizarCompra()">Finalizar Compra</button>
+  </div>
+</div>
+
+
+<div *ngIf="carrito.length > 0; else carritoVacio" class="carrito-container">
+  <!-- Tu contenido actual del carrito -->
+</div>
+
+<ng-template #carritoVacio>
+  <div class="carrito-vacio">
+    <h2>Tu carrito está vacío</h2>
+    <p>¡Explora nuestros productos!</p>
+    <button routerLink="/catalogo">Ir al catálogo</button>
+  </div>
+</ng-template>
+
+<!-- Modal para usuarios no logueados -->
+<div *ngIf="mostrarModalInvitado" class="modal-overlay">
+  <div class="modal-content">
+    <p>¿Deseas iniciar sesión o continuar como invitado?</p>
+    <div class="modal-buttons">
+      <button (click)="iniciarSesion()">Iniciar sesión</button>
+      <button (click)="continuarComoInvitado()">Continuar como invitado</button>
+    </div>
+  </div>
+</div>

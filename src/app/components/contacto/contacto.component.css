@@ -1,0 +1,203 @@
+.contacto-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.form-container {
+  background-color: #fff;
+  padding: 40px 50px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.logo-contacto {
+  max-width: 150px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-bottom: 30px;
+  color: #274c77;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-top:0;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #3a5068;
+  font-size: 1.05rem;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #d1dbe6;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: border-color 0.25s ease;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+.btn-secondary {
+  background: #e0e7ff;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background: #c7d2fe;
+}
+
+/* Estrellas interactivas */
+
+.estrellas-group label {
+  margin-bottom: 10px;
+  color: #3a5068;
+  font-weight: 600;
+}
+
+.estrellas {
+  display: flex;
+  flex-direction: row-reverse; /* Para que la estrella 5 quede a la izquierda */
+  justify-content: center;
+  gap: 6px;
+}
+
+.estrellas input[type="radio"] {
+  display: none;
+}
+
+.estrellas label {
+  font-size: 32px;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+/* Hover: rellena estrellas desde la que estás pasando hasta la derecha */
+.estrellas label:hover,
+.estrellas label:hover ~ label {
+  color: #f59e0b; /* amarillo dorado */
+}
+
+/* Cuando está seleccionado (checked), rellena las estrellas hasta esa */
+.estrellas input[type="radio"]:checked ~ label {
+  color: #f59e0b;
+}
+
+/* Además, que se vea el color en la estrella clicada y todas a la derecha (porque es row-reverse) */
+.estrellas input[type="radio"]:checked + label,
+.estrellas input[type="radio"]:checked + label ~ label {
+  color: #f59e0b;
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .contacto-container {
+    flex-direction: column;
+    padding: 30px 15px;
+  }
+
+  .form-container {
+    max-width: 100%;
+    padding: 30px 25px;
+    margin-bottom: 40px;
+  }
+
+  .botones {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .estrellas {
+    justify-content: flex-start;
+  }
+}
+
+.alert-exito {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

@@ -1,0 +1,412 @@
+.index-container {
+  max-width: 1700px;
+  padding: 20px 40px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.index-container h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.carrito-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 32px;
+  width: 100%;
+  max-width: 1200px;
+  background: white;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carrito-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: linear-gradient(135deg, #0f1a44, #1e2a68);
+  opacity: 0.6;
+  border-radius: 4px;
+}
+
+.carrito-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: #151e3f;
+  letter-spacing: 1.5px;
+  font-family: 'Rubik', 'Segoe UI', Tahoma, sans-serif;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Productos destacados en fila con scroll horizontal */
+.section-cards.productos {
+  display: flex;
+  flex-wrap: nowrap;
+  /* evita salto de línea */
+  gap: 50px;
+  justify-content: center;
+}
+
+.card {
+  background: linear-gradient(145deg, #f0f0f0, #ffffff);
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+
+  flex: 0 0 250px;
+  /* ancho fijo */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  color: #1e40af;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+/* Categorías en lista vertical con imagen a la izquierda y texto a la derecha */
+
+.categorias-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.carousel-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.carousel-track .card.categoria {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+/* Botones carrusel */
+.carousel-btn {
+  background-color: #1e40af;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.carousel-btn.prev {
+  margin-right: 10px;
+}
+
+.carousel-btn.next {
+  margin-left: 10px;
+}
+
+.section-cards.categorias {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.card.categoria {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  text-align: left;
+  cursor: default;
+}
+
+.card.categoria img {
+  width: 200px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-right: 25px;
+  flex-shrink: 0;
+}
+
+.card.categoria h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.card.categoria p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Responsive para categorías en móvil */
+@media (max-width: 768px) {
+  .section-cards.productos {
+    /* Puedes cambiar aquí si quieres que en móvil vuelvan a ser en columna */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .card.categoria {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card.categoria img {
+    margin: 0 0 15px 0;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.welcome-section {
+  display: flex;
+  align-items: center;
+  background-color: #f9fafb;
+  /* Fondo más claro para contraste */
+  color: #4b5563;
+  /* Gris medio para texto */
+  border-radius: 15px;
+  padding: 10px 20px;
+  /* Menos altura */
+  margin-bottom: 40px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.welcome-section img {
+  max-width: 250px;
+  /* Imagen más pequeña */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.welcome-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.welcome-text h2 {
+  font-weight: 900;
+  font-size: 1.8rem;
+  /* Reducido ligeramente */
+  color: #1e293b;
+  /* Gris oscuro */
+  margin-bottom: 10px;
+  /* Menos separación */
+}
+
+.welcome-text ul {
+  list-style-type: none;
+  padding-left: 0;
+  line-height: 1.4;
+  /* Menos separación entre líneas */
+}
+
+.welcome-text ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  /* Menos espacio entre elementos */
+  font-size: 0.95rem;
+  /* Texto un poco más compacto */
+  color: #6b7280;
+  /* Gris más claro */
+}
+
+.welcome-text ul li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  /* Azul más brillante */
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .welcome-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .welcome-text ul li::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Carrusel de valoraciones */
+.valoraciones-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+  overflow: hidden;
+}
+
+/* Track de valoraciones */
+.carousel-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+.valoraciones-carrusel {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+/* Cada grupo de 5 valoraciones ocupa el 100% */
+.valoraciones-slide {
+  display: flex;
+  flex: 0 0 100%;
+  justify-content: center;
+  gap: 25px;
+}
+
+/* Tarjeta de valoración */
+.card.valoracion {
+  background: linear-gradient(to bottom right, #ffffff, #f9fafb);
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem 1.8rem;
+  min-width: 280px;
+  max-width: 320px;
+  color: #1f2937;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.valoracion:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Nombre de usuario */
+.card.valoracion p:first-child {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+  color: #1e3a8a;
+}
+
+/* Estrellas */
+.card.valoracion p:nth-child(2) {
+  margin: 0;
+}
+
+.card.valoracion span {
+  font-size: 1.3rem;
+  margin-right: 3px;
+  color: #facc15;
+  /* Amarillo */
+  user-select: none;
+}
+
+.card.valoracion span.empty {
+  color: #d1d5db;
+  /* Gris claro */
+}
+
+/* Opinión del cliente */
+.card.valoracion p:last-child {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 0.75rem;
+  color: #374151;
+}
+
+/* Botones del carrusel */
+.carousel-btn {
+  background-color: white;
+  color: #151e3f;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: white;
+  transform: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.carousel-btn.prev {
+  margin-right: 10px;
+}
+
+.carousel-btn.next {
+  margin-left: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .valoraciones-carousel {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .valoraciones-carrusel {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card.valoracion {
+    min-width: 90%;
+  }
+}

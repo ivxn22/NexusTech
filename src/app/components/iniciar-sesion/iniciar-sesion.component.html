@@ -1,0 +1,26 @@
+<div class="carrito-header">
+  <img src="assets/img/Logo.png" alt="Logotipo NexusTech">
+  <h1>Iniciar Sesión </h1>
+</div>
+
+<div class="iniciar-sesion-container">
+  <div class="form-container">
+    <form (ngSubmit)="iniciarSesion()">
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="pass">Contraseña</label>
+        <input type="password" class="form-control" [(ngModel)]="pass" name="pass" required minlength="6">
+      </div>
+      <p *ngIf="mensajeError">{{ mensajeError }}</p>
+      <div>
+        <button type="submit" class="btn btn-primary" [disabled]="isLoading">Iniciar sesión</button>
+        <button type="reset" class="btn btn-secondary">Borrar</button>
+      </div>
+      <p class="registro-texto">¿Aún no tienes cuenta?</p>
+      <button class="btn btn-register" (click)="irARegistro()">Registrarse</button>
+    </form>
+  </div>
+</div>

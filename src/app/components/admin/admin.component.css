@@ -1,0 +1,117 @@
+.admin-container {
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.admin-secciones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  gap: 30px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.carrito-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 32px;
+  width: 100%;
+  max-width: 1200px;
+  background: white;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carrito-header img {
+  height: 10%;
+  width: 10%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.carrito-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: linear-gradient(135deg, #0f1a44, #1e2a68);
+  opacity: 0.6;
+  border-radius: 4px;
+}
+
+.carrito-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: #151e3f;
+  letter-spacing: 1.5px;
+  font-family: 'Rubik', 'Segoe UI', Tahoma, sans-serif;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Centrar la última card si hay un número impar de ellas */
+.admin-secciones > .card:nth-last-child(1):nth-child(odd) {
+  grid-column: 1 / -1;         /* Ocupar toda la fila */
+  justify-self: center;       /* Centrar horizontalmente */
+  width: 50%;                 /* Para que no se extienda toda la fila */
+}
+
+.card {
+  background: linear-gradient(145deg, #f0f0f0, #ffffff);
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #1e40af;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .admin-secciones {
+    grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+  }
+
+  .admin-container h1 {
+    font-size: 2rem;
+  }
+
+  /* Anular el centrado si ya es una sola columna */
+  .admin-secciones > .card:nth-last-child(1):nth-child(odd) {
+    width: 100%;
+    justify-self: stretch;
+  }
+}

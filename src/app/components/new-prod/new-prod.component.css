@@ -1,0 +1,183 @@
+/* Estilos generales del formulario */
+.formulario-producto {
+    max-width: 600px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 50px auto;
+    /* Margen superior de 50px y centrado horizontal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carrito-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 32px;
+    width: 100%;
+    max-width: 1200px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    margin: 20px auto 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrito-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    height: 2px;
+    background: linear-gradient(135deg, #0f1a44, #1e2a68);
+    opacity: 0.6;
+    border-radius: 4px;
+}
+
+.carrito-header img {
+    height: 10%;
+    width: 10%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.carrito-header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0;
+    color: #151e3f;
+    letter-spacing: 1.5px;
+    font-family: 'Rubik', 'Segoe UI', Tahoma, sans-serif;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ----------------------------- */
+/* Botón lateral izquierdo superior */
+/* ----------------------------- */
+
+.btn-volver {
+    position: absolute;
+    top: 150px; /* Debajo del h1 */
+    left: 20px;
+    padding: 8px 14px;
+    font-size: 14px;
+    background-color: white;
+    color: #151e3f;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-volver:hover {
+    background-color: white;
+    box-shadow: none;
+}
+.formulario-producto form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-producto label {
+    font-size: 16px;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.formulario-producto input,
+.formulario-producto textarea {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+    font-size: 14px;
+}
+
+.formulario-producto input:focus,
+.formulario-producto textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.formulario-producto textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.formulario-producto button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 16px;
+}
+
+.formulario-producto button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-producto button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Estilos de los mensajes de error */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Estilos para los campos requeridos y validación */
+.formulario-producto input.ng-invalid,
+.formulario-producto textarea.ng-invalid {
+    border-color: red;
+}
+
+.formulario-producto input.ng-valid,
+.formulario-producto textarea.ng-valid {
+    border-color: green;
+}
+
+/* Estilos para la selección de archivos */
+.formulario-producto input[type="file"] {
+    margin-bottom: 20px;
+}
+
+.formulario-producto input[type="file"]:focus {
+    outline: none;
+}
+
+/* Estilos para el formulario en pantallas pequeñas */
+@media (max-width: 768px) {
+    .formulario-producto {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .formulario-producto label {
+        font-size: 14px;
+    }
+
+    .formulario-producto input,
+    .formulario-producto textarea {
+        font-size: 13px;
+    }
+
+    .formulario-producto button {
+        font-size: 14px;
+    }
+}

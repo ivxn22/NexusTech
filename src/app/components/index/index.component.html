@@ -1,0 +1,65 @@
+<div class="index-container">
+  <!-- Sección de bienvenida -->
+  <div class="welcome-section">
+    <img src="assets/img/Logo.png" alt="Bienvenido a Nexus Tech" />
+    <div class="welcome-text">
+      <h2>BIENVENIDO A NEXUS TECH</h2>
+      <ul>
+        <li>Venta de material informático de calidad: Encuentra desde ordenadores y portátiles hasta monitores y
+          periféricos, todo de las marcas más reconocidas del mercado.</li>
+        <li>Reparaciones rápidas y efectivas: Nuestro equipo de expertos asegura que tus dispositivos estén en óptimas
+          condiciones en el menor tiempo posible.</li>
+        <li>Atención cercana y profesional: Nos enfocamos en brindarte un servicio que supere tus expectativas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr style="border: none; height: 2px; background-color: #ccc; margin: 40px 0;">
+  <div class="carrito-header">
+    <h1>Productos destacados</h1>
+  </div>
+  <div class="section-cards productos">
+    <div class="card" *ngFor="let producto of productosDestacados.slice(0, 5)"
+      (click)="mostrarProductoDetalle(producto.id_producto)" style="cursor:pointer;">
+      <img *ngIf="producto.imagen; else noImage"
+        [src]="'http://nexustech.gal/backend/' + producto.imagen" alt="{{producto.nombre}}">
+      <ng-template #noImage>
+        <img src="assets/no-image.png" alt="Sin imagen disponible">
+      </ng-template>
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.descripcion | slice:0:60 }}{{ producto.descripcion.length > 60 ? '...' : '' }}</p>
+      <p><strong>€ {{ producto.precio | number:'1.2-2' }}</strong></p>
+    </div>
+  </div>
+
+  <hr style="border: none; height: 2px; background-color: #ccc; margin: 40px 0;">
+    <div class="carrito-header">
+    <h1>Valoraciones de clientes</h1>
+  </div>
+
+  <div class="valoraciones-carousel" *ngIf="gruposValoraciones.length > 0">
+    <button class="carousel-btn prev" (click)="cambiarSlide(-1)">❮</button>
+
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track valoraciones-carrusel"
+        [style.transform]="'translateX(-' + (indiceActual * 100) + '%)'">
+        <div class="valoraciones-slide" *ngFor="let grupo of gruposValoraciones">
+          <div class="card valoracion" *ngFor="let val of grupo">
+            <p><strong>{{ val.gmail }}</strong></p>
+            <p>
+              <span *ngFor="let star of [1,2,3,4,5]" [ngClass]="star <= val.estrellas ? 'filled' : 'empty'">★</span>
+            </p>
+            <p>{{ val.opinion }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-btn next" (click)="cambiarSlide(1)">❯</button>
+  </div>
+
+  <ng-template #sinValoraciones>
+    <p>No hay valoraciones aún.</p>
+  </ng-template>
+
+</div>

@@ -1,0 +1,155 @@
+/* Asegúrate de aplicar esto en tu layout principal también */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  background-color: #f8f9fa; /* opcional */
+}
+
+main {
+  flex: 1; /* Esto hace que el contenido principal crezca y empuje el footer */
+}
+
+/* CONTENEDOR PRINCIPAL DEL COMPONENTE */
+:host {
+  display: block;
+  padding: 40px 20px; /* Elimina el padding-bottom fijo */
+  box-sizing: border-box;
+}
+
+/* CONTENEDOR DE DETALLE DEL PRODUCTO */
+.detalle-producto {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto 100px auto; /* margen inferior para separarlo del footer */
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  gap: 30px;
+}
+
+.columna {
+  flex: 1;
+  min-width: 300px;
+}
+
+.imagenes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img.principal {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.miniaturas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.miniaturas img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.miniaturas img:hover {
+  transform: scale(1.1);
+  border-color: #0077b6;
+}
+
+.detalles h2 {
+  font-size: 2rem;
+  color: #023e8a;
+  margin-bottom: 10px;
+}
+
+.detalles .descripcion {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.detalles .precio {
+  font-size: 1.6rem;
+  color: #e63946;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.btn {
+  background-color: #151e3f;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #023e8a;
+}
+
+.btn.volver {
+  background-color: white;
+  color:#151e3f;
+}
+
+
+.estado {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 60px;
+}
+
+.estado.error {
+  color: red;
+  font-weight: bold;
+}
+
+.toggle-descripcion {
+  color: #007bff;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.toggle-descripcion:hover {
+  text-decoration: underline;
+}
+
+.acciones .btn ion-icon {
+  font-size: 1.6rem; /* un poco más grande que el texto */
+  vertical-align: middle; /* para que quede bien alineado con el texto */
+}

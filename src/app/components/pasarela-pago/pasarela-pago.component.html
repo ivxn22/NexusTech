@@ -1,0 +1,24 @@
+<div class="carrito-header">
+  <img src="assets/img/Logo.png" alt="Logotipo NexusTech">
+  <h1>PASARELA DE PAGO</h1>
+</div>
+
+<div class="volver-atras-container">
+  <button class="volver-atras-btn" (click)="volverAtras()">← Volver atrás</button>
+</div>
+
+<form (ngSubmit)="pagar()">
+  <label>Número de Tarjeta:</label>
+  <input [(ngModel)]="datosTarjeta.numero" name="numero" required />
+
+  <label>Nombre en Tarjeta:</label>
+  <input [(ngModel)]="datosTarjeta.nombre" name="nombre" required />
+
+  <label>Fecha de Vencimiento:</label>
+  <input [(ngModel)]="datosTarjeta.vencimiento" name="vencimiento" required />
+
+  <label>CVV:</label>
+  <input [(ngModel)]="datosTarjeta.cvv" name="cvv" required />
+
+  <button type="submit">Pagar y Descargar Factura</button>
+</form>
