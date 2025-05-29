@@ -1,0 +1,12 @@
+-- Usuarios
+INSERT INTO Usuarios (nombre, apellidos, email, contraseña, direccion, localidad, tlfn, rol) VALUES
+(Usuario, Admin, 'admin@gmail.com', '1234', ' C/Archivero Dimas Perez 21 blq 2 bj a',  'admin', '61234578', 'Cuenca'),
+(Usuario, Normal, 'normal@gmail.com', '123', ' direccion_prueba', 'basico', '69875432', 'Cuenca'),
+
+-- Categorías
+INSERT INTO Categorias (nombre, descripcion) VALUES
+('Portatiles', 'Descubre nuestra selección de portátiles, diseñados para ofrecerte un rendimiento excepcional en cualquier lugar. Desde modelos ligeros y compactos ideales para la movilidad, hasta potentes equipos para profesionales y gamers exigentes. Encuentra la opción perfecta que combine rendimiento, estilo y tecnología avanzada para adaptarse a tus necesidades, ya sea para trabajar, estudiar o disfrutar de tu entretenimiento favorito.'),
+('Sobremesa', 'Explora nuestra gama de ordenadores de sobremesa, pensados para ofrecer la máxima potencia y versatilidad. Ideales para tareas exigentes como el diseño, la programación o el gaming, nuestros equipos combinan rendimiento, capacidad de expansión y fiabilidad. Ya sea para uso profesional o personal, encuentra el sobremesa perfecto que se adapte a tu ritmo y necesidades diarias.');
+('Monitores', 'Sumérgete en una experiencia visual superior con nuestra selección de monitores. Desde pantallas ultranítidas para diseño y productividad, hasta modelos con alta tasa de refresco ideales para gaming. Encuentra el monitor perfecto con la resolución, tamaño y tecnología que mejor se adapte a tu forma de trabajar, jugar o disfrutar del contenido multimedia.');
+('Perifericos', 'Completa tu equipo con nuestros periféricos de alta calidad: ratones, teclados y auriculares diseñados para mejorar tu experiencia tanto en el trabajo como en el juego. Desde dispositivos ergonómicos y precisos hasta accesorios con iluminación RGB y funciones avanzadas, encuentra las herramientas perfectas para sacar el máximo partido a tu ordenador con comodidad, estilo y rendimiento.');
+('Componenes', 'Mejora o personaliza tu ordenador con nuestra amplia gama de componentes. Desde procesadores y tarjetas gráficas hasta memorias RAM, discos duros y fuentes de alimentación, ofrecemos piezas de alto rendimiento para montar o actualizar tu equipo a medida. Ya seas un entusiasta del hardware o un profesional que busca fiabilidad y potencia, aquí encontrarás los componentes ideales para llevar tu PC al siguiente nivel');
