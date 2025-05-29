@@ -30,7 +30,7 @@ if ($conn->connect_error) {
 }
 $conn->set_charset("utf8mb4");
 
-// Consulta SQL para buscar productos por nombre o nombre de la categoría
+
 $query = "
     SELECT p.id_producto, p.nombre AS producto_nombre, p.descripcion, p.precio, p.stock,
            c.nombre AS categoria_nombre
@@ -55,7 +55,6 @@ $productos = [];
 while ($fila = $resultado->fetch_assoc()) {
     $id_producto = $fila['id_producto'];
 
-    // Obtener imágenes del producto
     $imagenes = [];
     $stmt_img = $conn->prepare("SELECT ruta FROM url_imagenes WHERE id_producto = ?");
     if ($stmt_img) {
@@ -68,7 +67,6 @@ while ($fila = $resultado->fetch_assoc()) {
         $stmt_img->close();
     }
 
-    // Renombrar claves para que el frontend pueda acceder con 'nombre' y 'categoria'
     $fila['nombre'] = $fila['producto_nombre'];
     $fila['categoria'] = $fila['categoria_nombre'];
     unset($fila['producto_nombre'], $fila['categoria_nombre']);

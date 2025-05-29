@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// --- COMPROBAR AUTENTICACIÓN ---
+
 if (!isset($_SESSION['id_usuario'])) {
     echo json_encode(["success" => false, "error" => "No estás autenticado (sesión no detectada)."]);
     exit;
@@ -38,7 +38,7 @@ if ($conn->connect_error) {
 }
 $conn->set_charset("utf8mb4");
 
-// --- OBTENER DATOS JSON ---
+
 $data = json_decode(file_get_contents("php://input"), true);
 $id_producto = intval($data['id_producto'] ?? 0);
 $cantidad = intval($data['cantidad'] ?? 1);
@@ -48,7 +48,7 @@ if ($id_producto <= 0 || $cantidad <= 0) {
     exit;
 }
 
-// --- VERIFICAR EXISTENCIA EN EL CARRITO ---
+
 $stmt = $conn->prepare("SELECT cantidad FROM carrito WHERE id_usuario = ? AND id_producto = ?");
 $stmt->bind_param("ii", $id_usuario, $id_producto);
 $stmt->execute();

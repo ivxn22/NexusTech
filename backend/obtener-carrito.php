@@ -17,7 +17,6 @@ if (!isset($_GET['id_usuario'])) {
 
 $id_usuario = intval($_GET['id_usuario']);
 
-// Conexión a la base de datos
 $dbhost = "qamy010.nexustech.gal";
 $dbuser = "qamy010";
 $dbpass = "Ivxn231103";
@@ -31,7 +30,6 @@ if ($conn->connect_error) {
 }
 $conn->set_charset("utf8mb4");
 
-// Obtener productos del carrito con datos de productos
 $sql = "SELECT c.id_producto, c.cantidad, p.nombre, p.precio, p.descripcion
         FROM carrito c
         JOIN productos p ON c.id_producto = p.id_producto

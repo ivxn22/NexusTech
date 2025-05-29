@@ -1,23 +1,23 @@
 <?
 ob_start();
-ini_set('display_errors', 1); // Cambiar a 0 en producción
+ini_set('display_errors', 1); 
 ini_set('log_errors', 1);
 error_reporting(E_ALL);
 
-// Cabeceras CORS y tipo de contenido
+
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Origin: http://nexustech.gal");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
-// OPTIONS preflight
+
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     echo json_encode(["success" => true, "message" => "OPTIONS preflight OK"]);
     exit;
 }
 
-// Conectar a la base de datos
+
 $host = "qamy010.nexustech.gal";
 $user = "qamy010";
 $pass = "Ivxn231103";
@@ -30,7 +30,7 @@ if ($conn->connect_error) {
     exit;
 }
 $conn->set_charset("utf8mb4");
-// Obtener productos destacados
+
 $productosDestacados = [];
 $sql = "
     SELECT p.id_producto, p.nombre, p.descripcion, p.precio, 
@@ -48,7 +48,7 @@ if ($res = $conn->query($sql)) {
     exit;
 }
 
-// Obtener categorías
+
 $categorias = [];
 $sql = "
     SELECT c.id_categoria, c.nombre AS categoria_nombre, c.descripcion AS categoria_descripcion,
@@ -67,7 +67,7 @@ if ($res = $conn->query($sql)) {
     exit;
 }
 
-// Obtener todos los productos
+
 $productos = [];
 $sql = "
     SELECT p.id_producto, p.nombre, p.descripcion, p.precio, p.id_categoria,
@@ -83,12 +83,12 @@ if ($res = $conn->query($sql)) {
     exit;
 }
 
-// Limpiar buffer (si hay datos previos por error)
+
 if (ob_get_length()) {
     ob_end_clean();
 }
 
-// Respuesta JSON final
+
 echo json_encode([
     "success" => true,
     "productos_destacados" => $productosDestacados,

@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// CORS con credenciales
+
 header('Content-Type: application/json');
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Origin: http://nexustech.gal");
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// Obtener datos JSON recibidos
+
 $input = json_decode(file_get_contents("php://input"), true);
 
 $gmail = $input['gmail'] ?? null;
@@ -22,7 +22,7 @@ $estrellas = $input['estrellas'] ?? null;
 $opinion = $input['opinion'] ?? null;
 $fecha = date("Y-m-d");
 
-// Validar datos obligatorios
+
 if (empty($gmail) || empty($estrellas) || empty($opinion)) {
     echo json_encode([
         "success" => false,
@@ -31,7 +31,7 @@ if (empty($gmail) || empty($estrellas) || empty($opinion)) {
     exit;
 }
 
-// Validar que gmail es un email válido
+
 if (!filter_var($gmail, FILTER_VALIDATE_EMAIL)) {
     echo json_encode([
         "success" => false,
@@ -40,7 +40,7 @@ if (!filter_var($gmail, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// Validar que estrellas es un número entre 1 y 5
+
 $estrellas = (int)$estrellas;
 if ($estrellas < 1 || $estrellas > 5) {
     echo json_encode([
@@ -50,7 +50,7 @@ if ($estrellas < 1 || $estrellas > 5) {
     exit;
 }
 
-// Conectar a la base de datos
+
 $dbhost = "qamy010.nexustech.gal";
 $dbuser = "qamy010";
 $dbpass = "Ivxn231103";
@@ -67,7 +67,7 @@ if ($conn->connect_error) {
 }
 $conn->set_charset("utf8mb4");
 
-// Preparar la consulta
+
 $stmt = $conn->prepare("INSERT INTO valoraciones (gmail, estrellas, opinion, fecha) VALUES (?, ?, ?, ?)");
 if (!$stmt) {
     http_response_code(500);
@@ -78,7 +78,7 @@ if (!$stmt) {
     exit;
 }
 
-// Bind params y ejecutar
+
 $stmt->bind_param("siss", $gmail, $estrellas, $opinion, $fecha);
 
 if ($stmt->execute()) {

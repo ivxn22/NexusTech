@@ -18,7 +18,6 @@ use PHPMailer\PHPMailer\Exception;
 
 header('Content-Type: application/json');
 
-// Leer JSON del body
 $data = json_decode(file_get_contents("php://input"), true);
 $nombre = $data['nombre'] ?? '';
 $email = $data['email'] ?? '';
@@ -32,17 +31,16 @@ if (empty($nombre) || empty($email) || empty($mensaje)) {
 $mail = new PHPMailer(true);
 
 try {
-    // Configuración SMTP
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'ivan.serranom22@gmail.com'; // tu email
-    $mail->Password = 'qouw pfvm cyeh hbkz';              // tu contraseña de app
+    $mail->Username = 'ivan.serranom22@gmail.com'; 
+    $mail->Password = 'qouw pfvm cyeh hbkz';              
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
     $mail->setFrom($email, $nombre);
-    $mail->addAddress('ivamserranomoreno@gmail.com'); // destinatario
+    $mail->addAddress('ivamserranomoreno@gmail.com');
 
     $mail->isHTML(true);
     $mail->Subject = 'Nuevo mensaje de contacto';

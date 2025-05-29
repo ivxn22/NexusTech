@@ -17,7 +17,6 @@ if (!isset($_GET['id'])) {
 
 $id_producto = intval($_GET['id']);
 
-// Conexión a la base de datos
 $dbhost = "qamy010.nexustech.gal";
 $dbuser = "qamy010";
 $dbpass = "Ivxn231103";
@@ -30,7 +29,7 @@ if ($conn->connect_error) {
     exit;
 }
 $conn->set_charset("utf8mb4");
-// Obtener datos del producto
+
 $stmt = $conn->prepare("SELECT * FROM productos WHERE id_producto = ?");
 $stmt->bind_param("i", $id_producto);
 $stmt->execute();
@@ -44,7 +43,7 @@ if (!$producto) {
     exit;
 }
 
-// Obtener imágenes del producto
+
 $stmt = $conn->prepare("SELECT ruta FROM url_imagenes WHERE id_producto = ?");
 $stmt->bind_param("i", $id_producto);
 $stmt->execute();

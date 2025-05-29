@@ -35,7 +35,7 @@ $apellidos = $data['apellidos'] ?? '';
 $email = $data['email'] ?? '';
 $password = trim($data['password'] ?? '');
 $direccion = $data['direccion'] ?? '';
-$tlfn = $data['telefono'] ?? ''; // Cambiar a "tlfn" abajo
+$tlfn = $data['telefono'] ?? ''; 
 $localidad = $data['localidad'] ?? '';
 
 if (!$nombre || !$email || !$password || !$direccion) {
@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
 $stmt->close();
 
 
-$rol = 'basico'; // Asegúrate de que "basico" sea válido
+$rol = 'basico'; 
 $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellidos, email, contrasena, direccion, tlfn, localidad, rol) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 if (!$stmt) {
